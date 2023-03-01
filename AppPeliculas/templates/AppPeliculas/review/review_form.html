@@ -1,0 +1,24 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+{% block tabla %}
+
+    
+      <form method="POST"> {% csrf_token %}
+        <table>
+        <tbody>
+          <tr>
+            <th>{{form.as_table}}</th>
+          </tr>
+        </tbody>
+        </table>
+        <input  type = "submit" value="Enviar">
+        <a href="{% url 'ListaReview' %}" > Volver</a>
+      </form>
+    
+    
+
+{% endblock %}
+
+ 

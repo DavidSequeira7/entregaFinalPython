@@ -1,0 +1,54 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+
+{% block subtitulo %}
+
+<h5>
+<table class="table table-sm text-center">
+    <thead class="table-light">
+      
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Nacionalidad</th>
+        <th>Modificar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        {% for actor in object_list %}
+        <tr class="table-light">
+        
+        <td> {{actor.Nombre}} </td>
+        <td> {{actor.Cumpleaños}} </td>
+        <td> {{actor.Nacionalidad}} </td>    
+        <td> <a href="{% url 'ActualizarActor' actor.id %}" > Editar</a> </td>
+        <td> <a href="{% url 'BorrarActor' actor.id %}" > Borrar</a> </td>
+       
+        {% endfor %} 
+    
+      </tr>
+
+      
+    
+    </tbody>
+    
+  </table>
+  <a href="{% url 'CrearActor' %}" > Crear</a>
+  
+</h5>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

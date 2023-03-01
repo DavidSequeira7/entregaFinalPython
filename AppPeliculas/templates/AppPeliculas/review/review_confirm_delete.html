@@ -1,0 +1,17 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+{% block tabla %}
+
+    
+      <form method="POST"> {% csrf_token %}
+        ¿ Estas seguro que desea borrar la review de {{object.Autor}}?
+        <input  type = "submit" value="Enviar">
+        <a href="{% url 'ListaReview' %}" > Volver</a>
+      </form>
+    
+    
+{% endblock %}
+
+ 

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Creative Studio landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Creative Studio | Free Bootstrap 4.3.x template</title>
+
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static 'AppPeliculas/assets/vendors/themify-icons/css/themify-icons.css' %}">
+
+    <!-- Bootstrap + Creative Studio main styles -->
+	<link rel="stylesheet" href="{% static 'AppPeliculas/assets/css/creative-studio.css' %}">
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+    
+    <!-- Page Navigation -->
+    <nav class="navbar custom-navbar navbar-expand-lg navbar-dark" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'Inicio' %}">
+                <img src="{% static 'AppPeliculas/assets/imgs/logo.png' %}" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, Creative studio Landing page">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+            </button>
+
+            <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Inicio' %}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ListaPeliculas' %}">Peliculas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ListaActor' %}">Actor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'ListaReview' %}">Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#info">Información</a>                    
+
+                    {% if user.is_authenticated %}
+
+                        <li class="nav-item">
+                            <p class="nav-link btn btn-sm ml-lg-3" href=""> Hola, {{user.username}} </p>
+                        </li>
+
+                    {% with first_image=user.avatar_set.first %}
+                        {% if first_image %}
+
+                            
+                            <a href="{{ first_image.imagen.url }}" target="black">
+                            <img src="{{ first_image.imagen.url }}" height="40px">
+                            
+
+                        {% endif %}
+                    {% endwith %}
+
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm ml-lg-3" href="{% url 'SubirAvatar' %}">Subir Avatar</a>
+                    </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary btn-sm ml-lg-3" href="{% url 'CerrarSesion' %}">Cerrar Sesión</a>
+                        </li>
+
+                    {% endif %}                  
+
+                    {% if not user.is_authenticated %}
+
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm ml-lg-3" href="{% url 'registro' %}">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary btn-sm ml-lg-3" href="{% url 'iniciarSesion' %}">Iniciar Sesión</a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Of Page Navigation -->
+
+    <!-- Page Header -->
+    <header class="header">
+        <div class="overlay">
+            {% block tabla %}
+
+            {% endblock %}
+            <h6 class="subtitle">
+                
+            {% block subtitulo %}
+
+            {% endblock %}
+            </h6>
+           
+
+            <h1 class="title">
+            
+            {% block titulo %}
+
+            {% endblock %}
+
+            </h1>
+            
+            {% block buscador %}
+          
+            {% endblock %}
+
+        </div>    
+          
+    </header>
+    <!-- End Of Page Header -->
+
+    <!-- Box -->
+    <div class="box text-center">
+        <div class="box-item">
+            <i class="ti-video-camera"></i>
+            <h6 class="box-title">Películas</h6>
+            <p>Encontrarás toda la información que necesitas sobre tus películas favoritas. En la página de cada película, podrás ver su nombre, género, año de lanzamiento, país de origen y duración.</p>
+        </div>
+        <div class="box-item">
+            <i class="ti-user"></i>
+            <h6 class="box-title">Actores</h6>
+            <p>Conocerás información sobre tus actores favoritos. En la página de cada actor, podrás ver su nombre, fecha de nacimiento y nacionalidad. ¡Todo sobre tus actores favoritos!</p>
+        </div>
+        <div class="box-item">
+            <i class="ti-comment"></i>
+            <h6 class="box-title">Review</h6>
+            <p>En nuestro sitio web podrás encontrar reseñas detalladas de cada película, con el nombre de la película, el autor que realizó la reseña y su ranking correspondiente. ¡Todo lo que opinan sobre tus películas favoritas!.</p>
+        </div>
+    </div>
+    <!-- End of Box -->
+
+    <section class="has-bg-img py-0">
+        <div class="container">
+            <div class="footer">
+                <div class="footer-lists">
+                    <ul class="list">
+                        <li class="list-head">
+                            <h6 class="font-weight-bold">INFORMACIÓN</h6>
+                        </li>
+                        <li class="list-body">
+                            <a id="info" class="logo">
+                                <img src="{% static 'AppPeliculas/assets/imgs/logo.png' %}">
+                                <h6>Acerca de mí</h6>
+                            </a>
+                            <p>¡Bienvenido! Me llamo David, soy un apasionado del cine desde hace muchos años y, desarrolle esta pagina con el framework Django. Aquí encontrarás reseñas y recomendaciones de las películas que más me han gustado. Gracias por visitar mi sitio web. ¡Que disfrutes de las películas! </p> 
+                            <p class="mt-3">
+                                Copyright <script>document.write(new Date().getFullYear())</script> &copy; <a class="d-inline text-primary">DevCRUD</a>
+                            </p>                   
+                        </li>
+                    </ul>
+                    
+                    <ul class="list">
+                        <li class="list-head">
+                            <h6 class="font-weight-bold">CONTACTO</h6>
+                        </li>
+                        <li class="list-body">
+                            <p>Póngase en contacto con nosotros y nos pondremos en contacto con usted dentro de las 24 horas.</p>
+                            <p><i class="ti-location-pin"></i> Calle Falsa 123</p>
+                            <p><i class="ti-email"></i>  info@website.com</p>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>    
+        </div>
+    </section>
+
+</body>
+</html>

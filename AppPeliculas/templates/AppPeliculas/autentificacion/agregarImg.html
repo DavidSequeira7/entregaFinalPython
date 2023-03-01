@@ -1,0 +1,30 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+
+
+{% block tabla %}
+
+<p>Aquí puedes actualizar tu avatar!</p>
+
+  
+<form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <table>
+    <tbody>
+      <tr>
+        <th>{{form.as_table}}</th>
+      </tr>
+    </tbody>
+    </table>
+    
+    <input  type = "submit" value="Subir Avatar">
+    <a href="{% url 'Inicio' %}" > Volver</a>
+  </form>
+
+
+{% endblock %}
+
+  
+    
+

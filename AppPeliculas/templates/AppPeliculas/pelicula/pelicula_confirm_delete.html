@@ -1,0 +1,17 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+{% block tabla %}
+
+    
+      <form method="POST"> {% csrf_token %}
+        ¿ Estas seguro que desea borrar la peliculas {{object.Nombre}}?
+        <input  type = "submit" value="Enviar">
+        <a href="{% url 'ListaPeliculas' %}" > Volver</a>
+      </form>
+    
+    
+{% endblock %}
+
+ 

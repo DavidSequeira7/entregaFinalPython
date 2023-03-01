@@ -1,0 +1,62 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+
+{% block subtitulo %}
+
+<h5>
+<table class="table table-sm text-center">
+    <thead class="table-light">
+      
+      <tr>
+        <th>Nombre</th>
+        <th>Genero</th>
+        <th>Año</th>
+        <th>Origen</th>
+        <th>Duracion</th>
+        <th>Casting</th>
+        <th>Ranking</th>
+        <th>Modificar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        {% for peliculas in object_list %}
+        <tr class="table-light">
+        
+        <td> {{peliculas.Nombre}} </td>
+        <td> {{peliculas.Genero}} </td>
+        <td> {{peliculas.Año}} </td>
+        <td> {{peliculas.Origen}} </td>
+        <td> {{peliculas.Duracion}} </td>
+        <td> {{peliculas.Cast}} </td>
+        <td> {{peliculas.Ranking}} </td>      
+        <td> <a href="{% url 'ActualizarPeliculas' peliculas.id %}" > Editar</a> </td>
+        <td> <a href="{% url 'BorrarPeliculas' peliculas.id %}" > Borrar</a> </td>
+       
+        {% endfor %} 
+    
+      </tr>
+
+      
+    
+    </tbody>
+    
+  </table>
+  <a href="{% url 'CrearPeliculas' %}" > Crear</a>
+  
+</h5>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

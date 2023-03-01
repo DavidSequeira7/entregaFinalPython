@@ -1,0 +1,58 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+
+{% block subtitulo %}
+
+<h5>
+<table class="table table-sm text-center">
+    <thead class="table-light">
+      
+      <tr>
+ 
+        <th>Autor</th>
+        <th>Reseña</th>
+        <th>Puntuación</th>
+        <th>Fecha</th>
+        <th>Modificar</th>
+        <th>Borrar</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+        {% for review in object_list %}
+        <tr class="table-light">
+        
+      
+        <td> {{review.Autor}} </td>
+        <td> {{review.Contenido}} </td>
+        <td> {{review.Ranking}} </td>
+        <td> {{review.Fecha}} </td>    
+        <td> <a href="{% url 'ActualizarReview' review.id %}" > Editar</a> </td>
+        <td> <a href="{% url 'BorrarReview' review.id %}" > Borrar</a> </td>
+       
+        {% endfor %} 
+    
+      </tr>
+
+      
+    
+    </tbody>
+    
+  </table>
+  <a href="{% url 'CrearReview' %}" > Crear</a>
+  
+</h5>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+

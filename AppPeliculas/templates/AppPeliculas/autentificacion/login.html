@@ -1,0 +1,22 @@
+{% extends "AppPeliculas/padre.html" %}
+
+{% load static %}
+
+{% block tabla %}
+
+    
+      <form method="POST"> {% csrf_token %}
+        <table>
+        <tbody>
+          <tr>
+            <th>{{miFormulario.as_table}}</th>
+          </tr>
+        </tbody>
+        </table>
+        <input  type = "submit" value="Iniciar Sesión">
+        <a href="{% url 'Inicio' %}" > Volver</a>
+      </form>
+    
+    
+
+{% endblock %}
